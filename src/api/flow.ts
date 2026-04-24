@@ -20,6 +20,8 @@ function envId(): string {
   return config.powerPlatformEnvId;
 }
 
+/* ─── List Flows ───────────────────────────────────────────── */
+
 export async function listFlows(): Promise<unknown> {
   const token = await getPowerPlatformToken();
   return httpRequest(
@@ -28,6 +30,8 @@ export async function listFlows(): Promise<unknown> {
   );
 }
 
+/* ─── Get Flow Details ─────────────────────────────────────── */
+
 export async function getFlow(flowId: string): Promise<unknown> {
   const token = await getPowerPlatformToken();
   return httpRequest(
@@ -35,6 +39,8 @@ export async function getFlow(flowId: string): Promise<unknown> {
     token
   );
 }
+
+/* ─── Trigger Flow ─────────────────────────────────────────── */
 
 export async function triggerFlow(
   flowId: string,
@@ -52,6 +58,8 @@ export async function triggerFlow(
   );
 }
 
+/* ─── Get Flow Run History ─────────────────────────────────── */
+
 export async function getFlowRuns(
   flowId: string,
   top: number = 10
@@ -62,6 +70,8 @@ export async function getFlowRuns(
     token
   );
 }
+
+/* ─── Enable / Disable Flow ────────────────────────────────── */
 
 export async function enableFlow(flowId: string): Promise<unknown> {
   const token = await getPowerPlatformToken();

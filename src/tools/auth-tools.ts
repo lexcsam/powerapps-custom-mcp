@@ -8,6 +8,8 @@ import { updateConfig } from "../config.js";
 import { testConnection, clearTokenCache } from "../auth/token-manager.js";
 import { success, withErrorHandling, type McpToolResult } from "../utils/error-handler.js";
 
+/* ─── Schemas ──────────────────────────────────────────────── */
+
 const ConfigureAuthSchema = z.object({
   tenantId: z.string().optional().describe("Azure Tenant ID"),
   clientId: z.string().optional().describe("Azure AD App Client ID"),
@@ -15,6 +17,8 @@ const ConfigureAuthSchema = z.object({
   dataverseUrl: z.string().optional().describe("Dataverse environment URL, e.g. https://orgname.crm.dynamics.com"),
   environmentId: z.string().optional().describe("Power Platform Environment ID"),
 });
+
+/* ─── Tool Definitions ─────────────────────────────────────── */
 
 export const authToolDefinitions = [
   {
@@ -32,6 +36,8 @@ export const authToolDefinitions = [
     inputSchema: { type: "object" as const, properties: {} },
   },
 ];
+
+/* ─── Handlers ─────────────────────────────────────────────── */
 
 export async function handleAuthTool(
   name: string,

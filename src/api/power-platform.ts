@@ -10,6 +10,8 @@ const BASE_URL = "https://api.powerplatform.com";
 const API_VERSION = "2022-03-01-preview";
 const ADMIN_API_VERSION = "2020-10-01";
 
+/* ─── Environments ─────────────────────────────────────────── */
+
 export async function listEnvironments(): Promise<unknown> {
   const token = await getPowerPlatformToken();
   return httpRequest(
@@ -54,6 +56,8 @@ export async function createEnvironment(params: {
   );
 }
 
+/* ─── Apps ──────────────────────────────────────────────────── */
+
 export async function listApps(environmentId: string): Promise<unknown> {
   const token = await getPowerPlatformToken();
   return httpRequest(
@@ -62,7 +66,10 @@ export async function listApps(environmentId: string): Promise<unknown> {
   );
 }
 
-export async function getApp(environmentId: string, appId: string): Promise<unknown> {
+export async function getApp(
+  environmentId: string,
+  appId: string
+): Promise<unknown> {
   const token = await getPowerPlatformToken();
   return httpRequest(
     `${BASE_URL}/powerapps/environments/${environmentId}/apps/${appId}?api-version=${API_VERSION}`,
@@ -70,7 +77,10 @@ export async function getApp(environmentId: string, appId: string): Promise<unkn
   );
 }
 
-export async function deleteApp(environmentId: string, appId: string): Promise<unknown> {
+export async function deleteApp(
+  environmentId: string,
+  appId: string
+): Promise<unknown> {
   const token = await getPowerPlatformToken();
   return httpRequest(
     `${BASE_URL}/powerapps/environments/${environmentId}/apps/${appId}?api-version=${API_VERSION}`,
@@ -109,7 +119,11 @@ export async function shareApp(
   );
 }
 
-export async function listConnectors(environmentId: string): Promise<unknown> {
+/* ─── Connectors ───────────────────────────────────────────── */
+
+export async function listConnectors(
+  environmentId: string
+): Promise<unknown> {
   const token = await getPowerPlatformToken();
   return httpRequest(
     `${BASE_URL}/providers/Microsoft.PowerApps/environments/${environmentId}/apis?api-version=${API_VERSION}&$filter=environment eq '${environmentId}'`,
@@ -117,7 +131,10 @@ export async function listConnectors(environmentId: string): Promise<unknown> {
   );
 }
 
-export async function getConnector(environmentId: string, connectorName: string): Promise<unknown> {
+export async function getConnector(
+  environmentId: string,
+  connectorName: string
+): Promise<unknown> {
   const token = await getPowerPlatformToken();
   return httpRequest(
     `${BASE_URL}/providers/Microsoft.PowerApps/environments/${environmentId}/apis/${connectorName}?api-version=${API_VERSION}`,

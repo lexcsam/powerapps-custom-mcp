@@ -17,7 +17,7 @@ function baseUrl(): string {
   return getConfig().dataverseUrl;
 }
 
-/* ─── Record CRUD ────────────────────────────────────────── */
+/* ─── Record CRUD ──────────────────────────────────────────── */
 
 export async function createRecord(
   entitySet: string,
@@ -82,7 +82,7 @@ export async function queryRecords(
   return httpRequest(`${entitySetUrl(baseUrl(), entitySet)}${query}`, token);
 }
 
-/* ─── Table / Entity Metadata ────────────────────────────── */
+/* ─── Table / Entity Metadata ──────────────────────────────── */
 
 export async function listTables(customOnly = false): Promise<unknown> {
   const token = await getDataverseToken();
@@ -247,7 +247,7 @@ export async function addColumn(
   );
 }
 
-/* ─── Solutions ──────────────────────────────────────────── */
+/* ─── Solutions ────────────────────────────────────────────── */
 
 export async function listSolutions(): Promise<unknown> {
   const token = await getDataverseToken();
@@ -266,6 +266,7 @@ export async function createSolution(params: {
 }): Promise<unknown> {
   const token = await getDataverseToken();
 
+  // First find or validate the publisher
   const publisherResult = (await httpRequest(
     `${baseUrl()}/api/data/v9.2/publishers?$filter=customizationprefix eq '${params.publisherPrefix}'&$select=publisherid`,
     token
@@ -329,7 +330,7 @@ export async function importSolution(
   );
 }
 
-/* ─── Security Roles ─────────────────────────────────────── */
+/* ─── Security Roles ───────────────────────────────────────── */
 
 export async function listSecurityRoles(): Promise<unknown> {
   const token = await getDataverseToken();

@@ -9,6 +9,8 @@ import { updateConfig } from "../config.js";
 import { clearTokenCache } from "../auth/token-manager.js";
 import { success, withErrorHandling, type McpToolResult } from "../utils/error-handler.js";
 
+/* ─── Schemas ──────────────────────────────────────────────── */
+
 const GetEnvSchema = z.object({
   environmentId: z.string().describe("The environment ID to retrieve details for"),
 });
@@ -24,6 +26,8 @@ const SwitchEnvSchema = z.object({
   dataverseUrl: z.string().url().describe("New Dataverse URL to switch to, e.g. https://neworg.crm.dynamics.com"),
   environmentId: z.string().optional().describe("Optional environment ID for management API calls"),
 });
+
+/* ─── Tool Definitions ─────────────────────────────────────── */
 
 export const environmentToolDefinitions = [
   {
@@ -53,6 +57,8 @@ export const environmentToolDefinitions = [
     inputSchema: zodToJsonSchema(SwitchEnvSchema),
   },
 ];
+
+/* ─── Handlers ─────────────────────────────────────────────── */
 
 export async function handleEnvironmentTool(
   name: string,

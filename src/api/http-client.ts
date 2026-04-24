@@ -43,6 +43,7 @@ export async function httpRequest<T = unknown>(
         body: body ? JSON.stringify(body) : undefined,
       });
 
+      // Handle rate limiting with retry-after
       if (response.status === 429 || response.status === 503) {
         const retryAfter = response.headers.get("Retry-After");
         const waitMs = retryAfter
@@ -55,6 +56,7 @@ export async function httpRequest<T = unknown>(
         }
       }
 
+      // No content responses (e.g., 204 after DELETE)
       if (response.status === 204) {
         return undefined as T;
       }
@@ -74,6 +76,7 @@ export async function httpRequest<T = unknown>(
         );
       }
 
+      // Parse JSON response
       if (responseText) {
         return JSON.parse(responseText) as T;
       }
@@ -93,6 +96,9 @@ export async function httpRequest<T = unknown>(
   throw lastError ?? new Error("Request failed after retries");
 }
 
+/**
+ * Custom error class that carries the MCP-formatted error result.
+ */
 export class HttpApiError extends Error {
   constructor(
     public readonly status: number,

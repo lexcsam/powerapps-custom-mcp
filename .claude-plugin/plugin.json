@@ -1,0 +1,31 @@
+{
+  "name": "powerapps-custom-mcp",
+  "version": "1.0.0",
+  "description": "All-in-one MCP server for Power Platform: environments, solutions, Dataverse CRUD, Power Automate flows, custom connectors, app sharing, security roles, and app templates.",
+  "author": {
+    "name": "Custom"
+  },
+  "keywords": [
+    "power-platform",
+    "powerapps",
+    "dataverse",
+    "power-automate",
+    "canvas-apps",
+    "model-driven-apps",
+    "mcp",
+    "connectors",
+    "solutions"
+  ],
+  "tools": 33,
+  "categories": [
+    "Auth",
+    "Environments",
+    "Solutions",
+    "Dataverse",
+    "Apps",
+    "Flows",
+    "Connectors",
+    "Security",
+    "Templates"
+  ]
+}

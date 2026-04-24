@@ -1,0 +1,23 @@
+{
+  "$schema": "https://aka.ms/azure-ai-foundry/mcp/schema",
+  "comment": "Register this MCP server as a tool in Azure AI Foundry Agent Builder.",
+  "tool": {
+    "type": "mcp",
+    "name": "powerapps-custom-mcp",
+    "description": "All-in-one Power Platform management: environments, Dataverse, solutions, apps, flows, connectors, security, and templates.",
+    "server": {
+      "transport": "stdio",
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "AZURE_TENANT_ID": "{{secrets.AZURE_TENANT_ID}}",
+        "AZURE_CLIENT_ID": "{{secrets.AZURE_CLIENT_ID}}",
+        "AZURE_CLIENT_SECRET": "{{secrets.AZURE_CLIENT_SECRET}}",
+        "DATAVERSE_URL": "{{secrets.DATAVERSE_URL}}",
+        "POWER_PLATFORM_ENV_ID": "{{secrets.POWER_PLATFORM_ENV_ID}}",
+        "CANVAS_ENVIRONMENT_ID": "{{secrets.CANVAS_ENVIRONMENT_ID}}",
+        "CANVAS_APP_ID": "{{secrets.CANVAS_APP_ID}}",
+        "CANVAS_CLUSTER_CATEGORY": "prod"
+      }
+    }
+  }

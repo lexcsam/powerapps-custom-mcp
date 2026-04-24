@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "powerapps": {
+      "command": "node",
+      "args": ["d:/Work/PowerApps Custom MCP/dist/index.js"],
+      "env": {
+        "AZURE_TENANT_ID": "your-tenant-id",
+        "AZURE_CLIENT_ID": "your-client-id",
+        "DATAVERSE_URL": "https://yourorg.crm.dynamics.com",
+        "POWER_PLATFORM_ENV_ID": "your-environment-id",
+        "CANVAS_ENVIRONMENT_ID": "",
+        "CANVAS_APP_ID": "",
+        "CANVAS_CLUSTER_CATEGORY": "prod"
+      }
+    }
+  }
